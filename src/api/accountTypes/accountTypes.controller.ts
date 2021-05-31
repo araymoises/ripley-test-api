@@ -2,7 +2,8 @@ import { Request, Response, NextFunction } from "express"
 import AccountType from "../../models/AccountType"
 
 export const newAccountType = async (req: Request, res: Response, next: NextFunction) => {
-	let accountType: any = new AccountType({name: 'Moises Aray', email: 'araymoises55@gmail.com', password: '123456789'})
+	const {name} = req.body;
+	let accountType: any = new AccountType({name})
 	accountType = await accountType.save()
     return res.jsend.success(accountType)
 }
