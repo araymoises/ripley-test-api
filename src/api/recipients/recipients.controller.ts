@@ -13,3 +13,8 @@ export const getRecipientByName = async (req: Request, res: Response, next: Next
 	let recipients = await Recipient.find({name: {$regex: '.*' + name + '.*', $options: 'i'} })
 	return res.status(201).send(recipients)
 }
+
+export const getRecipients = async (req: Request, res: Response, next: NextFunction) => {
+	let recipients = await Recipient.find({})
+	return res.status(201).send(recipients)
+}
